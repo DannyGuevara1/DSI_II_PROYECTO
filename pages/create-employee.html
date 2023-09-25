@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create account - Windmill Dashboard</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="../assets/css/tailwind.output.css" />
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+      defer
+    ></script>
+    <script src="../assets/js/init-alpine.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+      defer
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"defer></script>
+    <script type="module" src="../assets/js/create-employee.js" defer></script>
+  </head>
+  <body>
+    <div
+      class="flex items-center min-h-screen max-w-screen p-6 bg-gray-50 dark:bg-gray-900"
+    >
+      <main class="h-full w-full pb-16 overflow-y-auto">
+        <div class="container px-6 mx-auto grid">
+          <h2
+            class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
+          >
+            Crear empleado
+          </h2>
+
+          <!-- General elements -->
+          <h4
+            class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300"
+          >
+            Datos personales
+          </h4>
+          <div
+            class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
+          >
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Nombre</span>
+              <input
+              id="nombre"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder=""
+              />
+            </label>
+
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Apellido</span>
+              <input
+              id="apellido"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder=""
+              />
+            </label>
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Edad</span>
+              <input
+              id="edad"
+                type="number"
+                min="18"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder="Jane Doe"
+              />
+            </label>
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Email</span>
+              <input
+              id="email"
+                type="email"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder=""
+              />
+            </label>
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Contraseña</span>
+              <input
+                id="contrasena"
+                type="password"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder=""
+              />
+            </label>
+            <div class="mt-4 text-sm">
+              <span class="text-gray-700 dark:text-gray-400">
+                Tipo de empleado
+              </span>
+              <div class="mt-2">
+                <label
+                  class="inline-flex items-center text-gray-600 dark:text-gray-400"
+                >
+                  <input
+                    type="radio"
+                    class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                    name="accountType"
+                    value=1
+                  />
+                  <span class="ml-2">Empleado normal</span>
+                </label>
+                <label
+                  class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400"
+                >
+                  <input
+                    type="radio"
+                    class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                    name="accountType"
+                    value=2
+                  />
+                  <span class="ml-2">Empleado administrador</span>
+                </label>
+              </div>
+            </div>
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Nit</span>
+              <input
+              id="nit"
+                max="14"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder="Ingrese solo numeros sin espacios o guiones medios"
+              />
+            </label>
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Direccion</span>
+              <input
+              id="direccion"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder=""
+              />
+            </label>
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400"
+                >Fecha de contratacion</span
+              >
+              <input
+                id="fechaContratacion"
+                type="date"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder=""
+              />
+            </label>
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Telefono</span>
+              <input
+              id="telefono"
+                type="number"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder="Ingrese solo numeros sin espacios o guiones"
+              />
+            </label>
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Salario base</span>
+              <input
+              id="salarioBase"
+                type="number"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder=""
+              />
+            </label>
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">ISSS</span>
+              <input
+              id="isss"
+                disabled
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder=""
+              />
+            </label>
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">AFP</span>
+              <input
+              id="afp"
+                disabled
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder=""
+              />
+            </label>
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">RENTA</span>
+              <input
+              id="renta"
+                disabled
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder=""
+              />
+            </label>
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400"
+                >Foto del empleado (opcional)</span
+              >
+              <input
+              id="imgEmpleado"
+                type="file"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                placeholder=""
+              />
+            </label>
+
+            <div style="margin-top: 1rem">
+              <button id="btnEnviarEmpleado"
+                class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+              >
+                <svg
+                  class="icon icon-compass"
+                  style="
+                    display: inline-block;
+                    width: 1em;
+                    height: 1em;
+                    stroke-width: 0;
+                    stroke: currentColor;
+                    fill: currentColor;
+                    margin-right: 1rem;;
+                  "
+                >
+                  <use xlink:href="#icon-compass">
+                    <symbol id="icon-compass" viewBox="0 0 32 32">
+                      <path
+                        d="M17 32c-0.072 0-0.144-0.008-0.217-0.024-0.458-0.102-0.783-0.507-0.783-0.976v-15h-15c-0.469 0-0.875-0.326-0.976-0.783s0.129-0.925 0.553-1.123l30-14c0.381-0.178 0.833-0.098 1.13 0.199s0.377 0.749 0.199 1.13l-14 30c-0.167 0.358-0.524 0.577-0.906 0.577zM5.508 14h11.492c0.552 0 1 0.448 1 1v11.492l10.931-23.423-23.423 10.931z"
+                      ></path>
+                    </symbol>
+                  </use>
+                </svg>
+
+                <span>Enviar Datos</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
