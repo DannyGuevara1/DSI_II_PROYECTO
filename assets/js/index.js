@@ -15,6 +15,12 @@ verificarToken()
 //     link.setAttribute('href', `${href}?id=${id}`);
 //   }
 // });
+
+axios.get("http://localhost:8080/api/empleados/cantidad")
+.then(function (response){
+  const cantidadEmpleados = document.getElementById("cantidadEmpleados")
+  cantidadEmpleados.innerText = response.data;
+})
 document
   .getElementById("btnCreateEmployee")
   .addEventListener("click", function () {

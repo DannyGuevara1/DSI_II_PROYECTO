@@ -1,35 +1,53 @@
 /**
  * For usage, visit Chart.js docs https://www.chartjs.org/docs/latest/
  */
-const pieConfig = {
-  type: 'doughnut',
-  data: {
-    datasets: [
-      {
-        data: [33, 33, 33],
-        /**
-         * These colors come from Tailwind CSS palette
-         * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
-         */
-        backgroundColor: ['#0694a2', '#1c64f2', '#7e3af2'],
-        label: 'Dataset 1',
-      },
-    ],
-    labels: ['Shoes', 'Shirts', 'Bags'],
-  },
-  options: {
-    responsive: true,
-    cutoutPercentage: 80,
-    /**
-     * Default legends are ugly and impossible to style.
-     * See examples in charts.html to add your own legends
-     *  */
-    legend: {
-      display: false,
-    },
-  },
+// Llamada a la API para obtener las edades de los empleados
+axios.get('http://localhost:8080/api/edades-empleados')
+    .then(response => {
+        const edades = response.data;
+
+        
+        const edadesProcesadas = edades.map(edad => {
+            
+            return edad; 
+        });
+
+        // Generar colores aleatorios
+        const backgroundColors = edadesProcesadas.map(() => generateRandomColor());
+
+        const pieConfig = {
+            type: 'doughnut',
+            data: {
+                datasets: [{
+                    data: edadesProcesadas,
+                    backgroundColor: backgroundColors,
+                    label: 'Dataset 1',
+                }],
+                labels: ['Age 1', 'Age 2', 'Age 3'], // Puedes etiquetar las edades de acuerdo a tu contexto
+            },
+            options: {
+                responsive: true,
+                cutoutPercentage: 80,
+                legend: {
+                    display: false,
+                },
+            },
+        };
+
+
+        const pieCtx = document.getElementById('pie')
+        window.myPie = new Chart(pieCtx, pieConfig)
+    })
+    .catch(error => console.error('Error fetching edades-empleados:', error));
+
+function generateRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
 }
 
-// change this to the id of your chart element in HMTL
-const pieCtx = document.getElementById('pie')
-window.myPie = new Chart(pieCtx, pieConfig)
+
+

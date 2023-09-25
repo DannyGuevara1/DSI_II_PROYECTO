@@ -3,11 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Charts - Windmill Dashboard</title>
+    <title>Planillas </title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/css/tailwind.output.css" />
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
@@ -50,7 +53,7 @@
             class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
             href="#"
           >
-            Windmill
+            Optica estrella de david
           </a>
           <ul class="mt-6">
             <li class="relative px-6 py-3">
@@ -600,6 +603,38 @@
                   Generar pdf
                 </button>
               </div>
+            </div>
+            <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+              <div class="w-full overflow-x-auto">
+                <table id="myTable" class="display w-full whitespace-no-wrap">
+                  <thead>
+                      <tr
+                      class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                      <th class="px-4 py-3">Administrador</th>
+                      <th class="px-4 py-3">Estado</th>
+                      <th class="px-4 py-3">Acciones</th>
+                      </tr>
+                  </thead>
+                  <tbody
+                    id="tabla-admin"
+                    class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
+                  >
+
+                    
+                  </tbody>
+                  <tfoot>
+                    <tr
+                    class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                    <th class="px-4 py-3">Administrador</th>
+                    <th class="px-4 py-3">Estado</th>
+                    <th class="px-4 py-3">Acciones</th>
+                    </tr>
+                </tfoot>
+                  
+              </table>
+                
+              </div>
+              
             </div>
           </div>
         </main>
