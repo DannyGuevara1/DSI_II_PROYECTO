@@ -5,6 +5,11 @@ const urlParams = new URLSearchParams(window.location.search);
 const empleadoId = urlParams.get("id");
 let horaActual = 0;
 let estado = "";
+/**
+ * Función para actulizar la hora constantemente
+ * @param {ninguno}   
+ * @return {nada} 
+ */
 function actualizarHora() {
   const inputHoraEntrada = document.getElementById("horaEntrada");
   const inputHoraSalida = document.getElementById("horaSalida");
@@ -22,6 +27,11 @@ function actualizarHora() {
 
 // Actualizar la hora cada segundo
 setInterval(actualizarHora, 1000);
+/**
+ * Función para ingresar la hora de entrada 
+ * @param {empleadoId}   
+ * @return {nada} 
+ */
 function ingresarHoraEntrada(empleadoId) {
   const fecha = new Date().toISOString().split("T")[0];
   const hora = new Date().toLocaleTimeString([], {
@@ -66,7 +76,11 @@ function ingresarHoraEntrada(empleadoId) {
       // Manejar el error si es necesario
     });
 }
-
+/**
+ * Función asincrona para obtener el id de la asistencia mas reciente  
+ * @param {empleadoId}   
+ * @return {nada} 
+ */
 async function obtenerIdAsistenciaMasReciente(empleadoId) {
   try {
     const response = await axios.get(
@@ -81,6 +95,11 @@ async function obtenerIdAsistenciaMasReciente(empleadoId) {
   }
 }
 
+/**
+ * Función para obtener el valor del estado
+ * @param {ninguno}   
+ * @return {nada} 
+ */
 async function obteneValorIdEstado() {
   try {
     const resultado = await obtenerIdAsistenciaMasReciente(empleadoId);
@@ -94,6 +113,12 @@ async function obteneValorIdEstado() {
   }
 }
 
+/**
+ * Función para ingresar la hora de salida, del mismo dia de registro 
+ * de la hora de entrada
+ * @param {asistenciaId}   
+ * @return {nada} 
+ */
 async function actualizarHoraSalida(asistenciaId) {
   try {
     const fecha = new Date().toISOString().split("T")[0];

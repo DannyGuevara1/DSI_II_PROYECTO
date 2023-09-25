@@ -4,6 +4,11 @@ verificarToken()
 const urlParams = new URLSearchParams(window.location.search);
 const empleadoId = urlParams.get("id");
 const url = "http://localhost:8080/api";
+/**
+ * Función para manejar la petciones de historial por empleado
+ * @param {Ninguno}   
+ * @return {nada} 
+ */
 function obtenerEmpleados() {
   axios
     .get(url + `/historial/empleado/${empleadoId}`)

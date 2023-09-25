@@ -69,6 +69,11 @@ btnGenerar.addEventListener("click", function () {
     });
 });
 
+/**
+ * Función para manejar las peticiones de la api que devuelve todos los empleados
+ * @param {Ninguno}   
+ * @return {nada} 
+ */
 function obtenerEmpleados() {
   axios
     .get("http://localhost:8080/api/empleados/todos")

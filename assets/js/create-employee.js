@@ -1,17 +1,33 @@
 import { verificarToken } from "./ruter.js";
 verificarToken()
 const url = "http://localhost:8080/api";
+/**
+ * Función para calcular el ISSS
+ * @param {salarioBase}   
+ * @return {nada} 
+ */
 function calcularISSS(salarioBase) {
   // Realiza el cálculo del ISSS
   // Por ejemplo, supongamos que el ISSS es el 3% del salario base
   return salarioBase * 0.0725;
 }
 
+/**
+ * Función para calcular el AFP
+ * @param {salarioBase}   
+ * @return {nada} 
+ */
 function calcularAFP(salarioBase) {
   // Realiza el cálculo del AFP
   // Por ejemplo, supongamos que el AFP es el 7% del salario base
   return salarioBase * 0.03;
 }
+
+/**
+ * Función para calcular la RENTA
+ * @param {salarioBase}   
+ * @return {nada} 
+ */
 function calcularDescuentoRenta(salario) {
   if (salario <= 472.0) {
     return 0.0;
@@ -108,6 +124,11 @@ btnEnviarEmpleado.addEventListener("click", function () {
     imgEmpleado: "p.jpg",
   });
 });
+/**
+ * Función para ingresar el empleado
+ * @param {salarioBase}   
+ * @return {nada} 
+ */
 function ingresarEmpleado({
   nombre,
   apellido,

@@ -2,6 +2,11 @@ import { verificarToken } from "./ruter.js";
 verificarToken();
 const url = "http://localhost:8080/api";
 let valorInput;
+/**
+ * Función para manejar la petciones que devueve solos usuarios administradores
+ * @param {Ninguno}   
+ * @return {nada} 
+ */
 function obtenerEmpleados() {
   axios
     .get(url + "/empleados/admin")

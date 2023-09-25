@@ -14,8 +14,9 @@ axios.get('http://localhost:8080/api/edades-empleados')
 
         // Generar colores aleatorios
         const backgroundColors = edadesProcesadas.map(() => generateRandomColor());
-
+        console.log(edadesProcesadas)
         const pieConfig = {
+
             type: 'doughnut',
             data: {
                 datasets: [{
@@ -23,7 +24,7 @@ axios.get('http://localhost:8080/api/edades-empleados')
                     backgroundColor: backgroundColors,
                     label: 'Dataset 1',
                 }],
-                labels: ['Age 1', 'Age 2', 'Age 3'], // Puedes etiquetar las edades de acuerdo a tu contexto
+                labels: ['edad','edad','edad','edad'], // Puedes etiquetar las edades de acuerdo a tu contexto
             },
             options: {
                 responsive: true,
@@ -40,6 +41,11 @@ axios.get('http://localhost:8080/api/edades-empleados')
     })
     .catch(error => console.error('Error fetching edades-empleados:', error));
 
+/**
+ * Limitar el foco a los elementos enfocables dentro de `element`.
+ * @param {Ninguno}   
+ * @return {color -> hex} Color en formato hex 
+ */
 function generateRandomColor() {
     const letters = '0123456789ABCDEF';
     let color = '#';

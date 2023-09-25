@@ -1,3 +1,8 @@
+/**
+ * ruteo de paginas por roles .
+ * @param {Ninguno}   
+ * @return {Nada} 
+ */
 export function verificarToken() {
   const token = localStorage.getItem("token");
   const rol = localStorage.getItem("rol");

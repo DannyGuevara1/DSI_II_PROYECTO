@@ -1,6 +1,12 @@
 import { verificarToken } from "./ruter.js";
 verificarToken()
 const url = "http://localhost:8080/api";
+
+/**
+ * Función para manejar la petciones de empleados 
+ * @param {Ninguno}   
+ * @return {nada} 
+ */
 function obtenerEmpleados() {
   axios
     .get(url + "/empleados/todos")
@@ -81,6 +87,11 @@ function obtenerEmpleados() {
       $('#myTable_wrapper').addClass('bg-white divide-y dark:divide-gray-700 dark:bg-gray-800 dark:text-gray-400');
 
       // Agregar evento de clic a la fila
+      /**
+     * Función para agregar evento click a cada item de la tabla 
+     * @param {data} -> datos del objeto dataTable 
+     * @return {nada} 
+     */
       function agregarEventoClic(data) {
         $('#myTable tbody').on('click', 'tr', function () {
           const rowData = data[tabla.row(this).index()];

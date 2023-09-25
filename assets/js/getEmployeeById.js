@@ -62,7 +62,11 @@ axios
     console.log(error);
   });
 
-
+/**
+ * Función asincrona para manejar la peticion de actualizacion del estado del empleado
+ * @param {empleadoId, nuevoIdEstado} -> se usa para asignar el nuevo estado al historial    
+ * @return {nada} 
+ */
 async function actualizarIdEstado(empleadoId, nuevoIdEstado) {
   try {
     const empleadoResponse = await axios.post(url + `/asignarEstado/${empleadoId}/${nuevoIdEstado}`);
@@ -89,6 +93,11 @@ async function actualizarIdEstado(empleadoId, nuevoIdEstado) {
     console.error("Error al actualizar el empleado:", error);
   }
 }
+/**
+ * Función para formatear la hora actual
+ * @param {Ninguno}   
+ * @return {nada} 
+ */
 function obtenerFechaHoraFormateada() {
   const ahora = new Date();
   const anio = ahora.getFullYear();
@@ -100,7 +109,11 @@ function obtenerFechaHoraFormateada() {
 
   return `${anio}/${mes}/${dia} ${horas}:${minutos}:${segundos}`;
 }
-
+/**
+ * Función asincrona para manejar la peticion de envios de datos de historial
+ * @param {url, datos} 
+ * @return {nada} 
+ */
 async function enviarDatosHistorial(url, datos) {
   try {
     const respuesta = await axios.post(url + `/historial/ingresar`, datos);
@@ -111,6 +124,11 @@ async function enviarDatosHistorial(url, datos) {
 }
 
 
+/**
+ * Función asincrona para manejar la peticion de envios de los datos para ingresar el estado
+ * @param {url,id, datos} 
+ * @return {nada} 
+ */
 async function enviarDatos(url,id, datos) {
   try {
     const respuesta = await axios.post(url + `/estado/ingresar/${id}`, datos);

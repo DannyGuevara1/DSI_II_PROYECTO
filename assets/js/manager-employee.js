@@ -2,6 +2,11 @@ import { verificarToken } from "./ruter.js"
 
 verificarToken()
 const url = "http://localhost:8080/api";
+/**
+ * Función para manejar la peticion a la api para obtener todos empleados
+ * @param {Ninguno}   
+ * @return {nada} 
+ */
 function obtenerEmpleados() {
   axios
     .get(url + "/empleados/todos")
@@ -258,7 +263,11 @@ function obtenerEmpleados() {
     });
 }
 obtenerEmpleados();
-// Función para manejar el evento de eliminación
+/**
+ * Función para manejar el evento de eliminación
+ * @param {Ninguno}   
+ * @return {nada} 
+ */
 function handleDelete() {
   // Obtener la fila padre del botón de eliminación
   const row = this.closest("tr");

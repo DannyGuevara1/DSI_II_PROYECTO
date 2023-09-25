@@ -1,4 +1,10 @@
 const url = "http://localhost:8080/api";
+/**
+ * Función para manejar la peticiones y creacion de variables locales del navegador
+ * como token
+ * @param {Ninguno}   
+ * @return {nada} 
+ */
 $(document).ready(function () {
   $("#loginForm").submit(function (e) {
     e.preventDefault();
@@ -70,112 +76,3 @@ $(document).ready(function () {
     });
   });
 });
-
-/////////////////////////////////////////////////////////////////////////////////////
-// const url = "http://localhost:8080/api";
-// document.getElementById("loginForm").addEventListener("submit", function (e) {
-//   e.preventDefault();
-
-//   const email = document.getElementById("email-input").value;
-//   const contra = document.getElementById("pass").value;
-//   const objeto = {
-//     email : email,
-//     contrasena : contra
-//   }
-//   console.log(objeto)
-//   // Realizar una solicitud POST a la API para iniciar sesión utilizando Axios
-//   axios.post(url+"/empleado/login", objeto)
-//       .then(response => {
-//           if (response.status === 200) {
-//               // Si la respuesta es exitosa, obtenemos el token y el objeto Empleado.
-//               console.log(response)
-//               const token = response.headers.authorization;
-//               const empleado = response.data;
-
-//               // Aquí puedes hacer lo que necesites con el token y el objeto Empleado.
-//               console.log("Token JWT:", token);
-//               console.log("Empleado:", empleado);
-//               //document.getElementById("result").innerHTML = "Inicio de sesión exitoso.";
-//           }
-//       })
-//       .catch(error => {
-//           console.error("Error:", error.response.data);
-//           //document.getElementById("result").innerHTML = "Error al iniciar sesión: " + error.response.data;
-//       });
-// });
-//////////////////////////////////////////////////////////////////////////////////////////
-// const btnlogin = document.getElementById("btnlogin");
-// btnlogin.addEventListener("click", validar);
-
-// function validar() {
-//   // Realizar la solicitud de inicio de sesión utilizando Axios
-//   // Obtener los valores del formulario
-//   const username = document.getElementById("email-input").value;
-//   const password = document.getElementById("pass").value;
-//   try {
-//     // Realizar una solicitud a la API para obtener los detalles del empleado
-//     axios
-//       .get(url + `/empleado/login`)
-//       .then(function (response) {
-
-//         const empleado = response.data;
-//         let encontrado = false; // Variable para realizar un seguimiento de si se encontró una coincidencia
-
-//         empleado.forEach(function (empleado) {
-//           console.log("ingresado: " + username);
-//           console.log("api: " + empleado.email);
-//           if (username == empleado.email && password == empleado.contrasena) {
-//             if (empleado.rol === 1) {
-//               encontrado = true;
-//               Swal.fire({
-//                 icon: "success",
-//                 title: "Inicio de sesión exitoso",
-//                 text: "¡Bienvenido!",
-//                 showCancelButton: false,
-//                 confirmButtonText: "OK",
-//               }).then((result) => {
-//                 if (result.isConfirmed) {
-//                   window.location.href =
-//                     "../index-employee.html?id=" + empleado.id_empleado;
-//                 }
-//               });
-//             } else {
-//               encontrado = true;
-//               Swal.fire({
-//                 icon: "success",
-//                 title: "Inicio de sesión exitoso",
-//                 text: "¡Bienvenido!",
-//                 showCancelButton: false,
-//                 confirmButtonText: "OK",
-//               }).then((result) => {
-//                 if (result.isConfirmed) {
-//                   window.location.href =
-//                     "../index.html?id=" + empleado.id_empleado;
-//                 }
-//               });
-//             }
-
-//             return; // Detener la iteración aquí
-//           }
-//         });
-
-//         // Verificar si se encontró una coincidencia
-//         if (!encontrado) {
-//           Swal.fire({
-//             icon: "error",
-//             title: "Error al enviar los datos",
-//             text: "Tus credenciales son inválidas.",
-//           });
-//         }
-//       })
-//       .catch(function (error) {
-//         console.log(error);
-//       });
-//   } catch (error) {
-//     // Manejar el error de inicio de sesión
-//     console.error("Error de inicio de sesión:", error);
-//     // Mostrar un mensaje de error al usuario, por ejemplo:
-//     // const errorMessage = document.getElementById('errorMessage');
-//     // errorMessage.textContent = 'Credenciales inválidas';
-//   }
-// }

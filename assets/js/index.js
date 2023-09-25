@@ -1,21 +1,6 @@
 import { verificarToken } from "./ruter.js"
 
 verificarToken()
-// // Obtener el parámetro 'id' de la URL
-// const urlParams = new URLSearchParams(window.location.search);
-// const id = urlParams.get('id');
-
-// // Obtener todos los elementos <a> en la página
-// const links = document.querySelectorAll('a');
-
-// // Recorrer cada enlace y agregar el parámetro 'id' si está presente
-// links.forEach(link => {
-//   if (id) {
-//     const href = link.getAttribute('href');
-//     link.setAttribute('href', `${href}?id=${id}`);
-//   }
-// });
-
 axios.get("http://localhost:8080/api/empleados/cantidad")
 .then(function (response){
   const cantidadEmpleados = document.getElementById("cantidadEmpleados")
