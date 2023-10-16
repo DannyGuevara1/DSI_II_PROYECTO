@@ -498,7 +498,7 @@
                 <div class="flex items-center justify-center flex-col bg-gray-700 p-4 rounded-lg w-48 space-y-4">
                   <img class="rounded-full border-gray-100 shadow-sm w-24 h-24"
                     src="https://randomuser.me/api/portraits/men/81.jpg" alt="user image" />
-                  <h1 id="nombre" class="text-gray-50 font-semibold dark:text-gray-300">Derry Harris</h1>
+                  <h1 id="nombre" class="text-gray-50 font-semibold dark:text-gray-300"></h1>
                   <h2 id="puesto"></h2>
                   <h3 id="email"></h3>
                   <button
@@ -508,6 +508,31 @@
                 
               </div>
             </div>
+          </div>
+
+          <div style="margin-bottom: 1rem; margin-top: 1rem;" class="flex row">
+            <button id="btnEnviarEstado"
+              class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+              <svg class="icon icon-compass" style="
+                    display: inline-block;
+                    width: 1em;
+                    height: 1em;
+                    stroke-width: 0;
+                    stroke: currentColor;
+                    fill: currentColor;
+                    margin-right: 1rem;;
+                  ">
+                <use xlink:href="#icon-compass">
+                  <symbol id="icon-compass" viewBox="0 0 32 32">
+                    <path
+                      d="M17 32c-0.072 0-0.144-0.008-0.217-0.024-0.458-0.102-0.783-0.507-0.783-0.976v-15h-15c-0.469 0-0.875-0.326-0.976-0.783s0.129-0.925 0.553-1.123l30-14c0.381-0.178 0.833-0.098 1.13 0.199s0.377 0.749 0.199 1.13l-14 30c-0.167 0.358-0.524 0.577-0.906 0.577zM5.508 14h11.492c0.552 0 1 0.448 1 1v11.492l10.931-23.423-23.423 10.931z">
+                    </path>
+                  </symbol>
+                </use>
+              </svg>
+
+              <span>Finalizar permiso</span>
+            </button>
           </div>
   
           <!-- General elements -->
