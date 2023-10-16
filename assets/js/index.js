@@ -70,11 +70,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
           info.jsEvent.preventDefault(); // prevents browser from following link in current tab.
         } else {
+          
           Swal.fire({
             title: eventObj.title,
             icon: "info",
             html: `<h2><b>Fecha de inicio:</b> ${eventObj.startStr}</h2> <br/>
-                  <h2><b>Fecha de final:</b> ${eventObj.endStr}</h2>`,
+                  <h2><b>Fecha de final:</b> ${eventObj.endStr === "" ? eventObj.startStr: eventObj.endStr}</h2>`,
             showCloseButton: true,
             showCancelButton: false,
           });
