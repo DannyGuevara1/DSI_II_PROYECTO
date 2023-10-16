@@ -45,11 +45,10 @@ document.addEventListener("DOMContentLoaded", function () {
         title: historial.empleado.nombre + " " + historial.empleado.apellido,
         start: historial.estado.fecha_inicio,
         end: historial.estado.fecha_final,
-        description: "la",
         color: color,
       };
     });
-    console.log(eventsResponse);
+    
     var calendarEl = document.getElementById("calendar");
     var calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: "dayGridMonth",
