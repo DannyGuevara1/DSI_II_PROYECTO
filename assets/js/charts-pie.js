@@ -14,7 +14,7 @@ axios.get('http://localhost:8080/api/edades-empleados')
 
         // Generar colores aleatorios
         const backgroundColors = edadesProcesadas.map(() => generateRandomColor());
-        console.log(edadesProcesadas)
+        
         const pieConfig = {
 
             type: 'doughnut',

@@ -15,7 +15,7 @@ export function verificarToken() {
 
   // Si el rol es 1, permitir acceso solo a ciertas páginas
   if (rol === "1") {
-    const allowedPages = ["index-employee.html", "email.html"]; // Lista de páginas permitidas
+    const allowedPages = ["index-employee.html", "email.html","edit-profile.html"]; // Lista de páginas permitidas
 
     // Obtener la página actual
     const currentPage = window.location.pathname.split("/").pop();
@@ -34,7 +34,9 @@ export function verificarToken() {
       "status.html",
       "user.html",
       "history.html",
-      "edit-employee.html"]; // Lista de páginas permitidas
+      "edit-employee.html",
+      "create-status.html",
+      "edit-profile.html"]; // Lista de páginas permitidas
 
     // Obtener la página actual
     const currentPage = window.location.pathname.split("/").pop();

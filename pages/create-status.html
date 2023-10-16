@@ -8,21 +8,40 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"
+    />
+    <script
+      src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"
+      defer
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="../assets/css/tailwind.output.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css"
+    />
     <script
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer
     ></script>
     <script src="../assets/js/init-alpine.js"></script>
     <script
+      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+      defer
+    ></script>
+    <script
       type="module"
       src="../assets/js/management-status.js"
       defer
     ></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"defer></script>
     <script
-      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+      src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"
       defer
     ></script>
   </head>
@@ -296,9 +315,95 @@
                 </div>
               </label>
             </div>
+            <div class="w-full overflow-x-auto">
+              <table id="myTable" class="display w-full whitespace-no-wrap">
+                <thead>
+                  <tr
+                    class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
+                  >
+                    <th class="px-4 py-3">Estado</th>
+                    <th class="px-4 py-3">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody
+                  id="tabla-admin"
+                  class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800"
+                ></tbody>
+                <tfoot>
+                  <tr
+                    class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
+                  >
+                    <th class="px-4 py-3">Estado</th>
+                    <th class="px-4 py-3">Acciones</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
           </div>
         </main>
       </div>
     </div>
+    <script>
+      function eliminarEmpleado(id) {
+        Swal.fire({
+          title: "¿Estás seguro?",
+          text: "Esta acción eliminará al empleado de forma permanente.",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Sí, eliminar",
+          cancelButtonText: "Cancelar",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            axios
+              .delete("http://localhost:8080/api/eliminar/tipoEstado/" + id)
+              .then((response) => {
+                Swal.fire(
+                  "Eliminado!",
+                  "El empleado ha sido eliminado.",
+                  "success"
+                );
+              })
+              .catch((error) => {
+                console.log(error);
+                alert(
+                  "No puedes eliminar esta estado solo actulizarlo, debido a que esta siendo usado o fue por un empelado"
+                );
+              });
+          }
+        });
+      }
+
+      function actualizarEmpleado(id) {
+        Swal.fire({
+          title: "Escribe el nuevo nombre del estado",
+          input: "text",
+          inputLabel: "Nombre del estado",
+          showCancelButton: true,
+          confirmButtonText: "Actualizar",
+          cancelButtonText: "Cancelar",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            axios
+              .put("http://localhost:8080/api/actualizar/tipoEstado/" + id, {
+                 tipoEstado: result.value ,
+              })
+              .then((response) => {
+                Swal.fire(
+                  "Actualizado!",
+                  "El estado ha sido actualizado.",
+                  "success"
+                );
+              })
+              .catch((error) => {
+                console.log(error);
+                alert(
+                  "No puedes eliminar esta estado solo actulizarlo, debido a que esta siendo usado o fue por un empelado"
+                );
+              });
+          }
+        });
+      }
+    
+    </script>
   </body>
 </html>
